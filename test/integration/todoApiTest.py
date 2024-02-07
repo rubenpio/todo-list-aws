@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import http.client
 import os
 import unittest
