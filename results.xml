@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite errors="0" failures="5" hostname="ip-172-31-47-115" name="pytest" skipped="0" tests="5" time="0.263" timestamp="2024-02-07T10:52:39.869025"><testcase classname="test.integration.todoApiTest.TestApi" name="test_api_addtodo" time="0.001"><failure message="AssertionError: unexpectedly None : URL no configurada">self = &lt;todoApiTest.TestApi testMethod=test_api_addtodo&gt;
+
+    def setUp(self):
+&gt;       self.assertIsNotNone(BASE_URL, "URL no configurada")
+E       AssertionError: unexpectedly None : URL no configurada
+
+test/integration/todoApiTest.py:21: AssertionError</failure></testcase><testcase classname="test.integration.todoApiTest.TestApi" name="test_api_deletetodo" time="0.001"><failure message="AssertionError: unexpectedly None : URL no configurada">self = &lt;todoApiTest.TestApi testMethod=test_api_deletetodo&gt;
+
+    def setUp(self):
+&gt;       self.assertIsNotNone(BASE_URL, "URL no configurada")
+E       AssertionError: unexpectedly None : URL no configurada
+
+test/integration/todoApiTest.py:21: AssertionError</failure></testcase><testcase classname="test.integration.todoApiTest.TestApi" name="test_api_gettodo" time="0.001"><failure message="AssertionError: unexpectedly None : URL no configurada">self = &lt;todoApiTest.TestApi testMethod=test_api_gettodo&gt;
+
+    def setUp(self):
+&gt;       self.assertIsNotNone(BASE_URL, "URL no configurada")
+E       AssertionError: unexpectedly None : URL no configurada
+
+test/integration/todoApiTest.py:21: AssertionError</failure></testcase><testcase classname="test.integration.todoApiTest.TestApi" name="test_api_listtodos" time="0.001"><failure message="AssertionError: unexpectedly None : URL no configurada">self = &lt;todoApiTest.TestApi testMethod=test_api_listtodos&gt;
+
+    def setUp(self):
+&gt;       self.assertIsNotNone(BASE_URL, "URL no configurada")
+E       AssertionError: unexpectedly None : URL no configurada
+
+test/integration/todoApiTest.py:21: AssertionError</failure></testcase><testcase classname="test.integration.todoApiTest.TestApi" name="test_api_updatetodo" time="0.001"><failure message="AssertionError: unexpectedly None : URL no configurada">self = &lt;todoApiTest.TestApi testMethod=test_api_updatetodo&gt;
+
+    def setUp(self):
+&gt;       self.assertIsNotNone(BASE_URL, "URL no configurada")
+E       AssertionError: unexpectedly None : URL no configurada
+
+test/integration/todoApiTest.py:21: AssertionError</failure></testcase></testsuite></testsuites>
