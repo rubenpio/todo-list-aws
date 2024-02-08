@@ -8,7 +8,7 @@ import json
 import pytest
 
 
-BASE_URL = os.environ.get("BASE_URL")
+BASE_URL = BASE_URL2
 #BASE_URL = "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod"
 DEFAULT_TIMEOUT = 2  # in secs
 
