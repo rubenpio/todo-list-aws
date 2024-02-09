@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Get Code') {
             steps {
-                git branch: 'develop', url: 'https://github.com/rubenpio/f.git'
+                git branch: 'develop', url: 'https://github.com/rubenpio/todo-list-aws.git'
             }
         }
         stage ('Static test') {
