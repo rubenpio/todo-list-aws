@@ -1,0 +1,10 @@
+version = 0.1
+[staging.deploy.parameters]
+stack_name = "todo-list-aws"
+confirm_changeset = false
+capabilities = ["CAPABILITY_IAM"]
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-7d3sgygjka7k"
+disable_rollback = false
+
+[staging.deploy.parameters.parameter_overrides]
+Stage = "staging"
