@@ -1,6 +1,8 @@
 pipeline {
     agent any
-    
+    environment {
+        GITHUB_TOKEN = credentials('github-token')
+    }
     stages {
         stage('Get Code') {
             steps {
@@ -40,10 +42,10 @@ pipeline {
                 sh '''
                     git add . 
                     git commit -m "Release 1.0.0"
-                    git push https://rubenpio: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@github.com/rubenpio/todo-list-aws.git develop
+                    git push https://rubenpio:${env.GITHUB_TOKEN}@github.com/rubenpio/todo-list-aws.git develop
                     git checkout master
                     git merge -X theirs develop
-                    git push -f https://rubenpio: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@github.com/rubenpio/todo-list-aws.git master 
+                    git push -f https://rubenpio:${env.GITHUB_TOKEN}@github.com/rubenpio/todo-list-aws.git master  
                 '''
             }
         }
