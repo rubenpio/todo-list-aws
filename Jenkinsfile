@@ -28,8 +28,22 @@ pipeline {
             steps {
                 sh '''
                     set PYTHONPATH=%WORKSPACE%
-                    ksh script.ksh
+                    ksh test/integration/scripts/script.ksh
                     /var/lib/jenkins/.local/bin/pytest --junitxml=results.xml test/integration/todoApiTest.py 
+                    ksh test/integration/scripts/reset.ksh
+                '''
+                junit 'results.xml'
+            }
+        }
+        stage ('Promote') {
+            steps {
+                sh '''
+                    git add . 
+                    git commit -m "mensaje"
+                    git push https://rubenpio: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@github.com/rubenpio/todo-list-aws.git develop
+                    git checkout master
+                    git merge -X theirs develop
+                    git push -f https://rubenpio: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@github.com/rubenpio/todo-list-aws.git master 
                 '''
             }
         }
