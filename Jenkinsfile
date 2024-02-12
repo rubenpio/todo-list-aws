@@ -1,6 +1,8 @@
 pipeline {
     agent any
-    
+    environment {
+        GITHUB_TOKEN = credentials('TOKEN')
+    }
     stages {
         stage('Get Code') {
             steps {
@@ -21,10 +23,22 @@ pipeline {
             steps {
                 sh '''
                     set PYTHONPATH=%WORKSPACE%
-                    chmod 774 -R test/integration/scripts
-                    ksh test/integration/scripts/script_prod.ksh
-                    /var/lib/jenkins/.local/bin/pytest --junitxml=results.xml test/integration/todoApiTestProd.py 
-                    test/integration/scripts/reset_prod.ksh
+                    ksh test/integration/scripts/script.ksh
+                    /var/lib/jenkins/.local/bin/pytest --junitxml=results.xml test/integration/todoApiTest.py 
+                    ksh test/integration/scripts/reset.ksh
+                '''
+                junit 'results.xml'
+            }
+        }
+        stage ('Promote') {
+            steps {
+                sh '''
+                    git add . 
+                    git commit -m "Release 1.0.0"
+                     git push https://rubenpio:${env.GITHUB_TOKEN}@github.com/rubenpio/todo-list-aws.git develop
+                    git checkout master
+                    git merge -X theirs develop
+                    git push -f https://rubenpio:${env.GITHUB_TOKEN}@github.com/rubenpio/todo-list-aws.git master 
                 '''
                 junit 'results.xml'
                 script {
