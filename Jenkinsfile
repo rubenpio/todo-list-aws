@@ -42,10 +42,10 @@ pipeline {
                 sh '''
                     git add . 
                     git commit -m "Release 1.0.0"
-                    git push https://rubenpio:${env.GITHUB_TOKEN}@github.com/rubenpio/todo-list-aws.git develop
+                    git push https://rubenpio@github.com/rubenpio/todo-list-aws.git develop
                     git checkout master
                     git merge -X theirs develop
-                    git push -f https://rubenpio:${env.GITHUB_TOKEN}@github.com/rubenpio/todo-list-aws.git master  
+                    git push -f https://rubenpio@github.com/rubenpio/todo-list-aws.git master  
                 '''
             }
         }
