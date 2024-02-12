@@ -42,7 +42,7 @@ pipeline {
                 script {
                     sh '''
                         git add . 
-                        git commit -m "Release 1.0.0"
+                        git commit -m "Release 1.0"
                         git push https://rubenpio:${GITHUB_TOKEN}@github.com/rubenpio/todo-list-aws.git develop
                         git checkout master
                         git merge -X theirs develop
