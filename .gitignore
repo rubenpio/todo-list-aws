@@ -5,5 +5,4 @@ tests
 pyenvunittests
 .coverage
 coverage.xml
-*.txt
-*.out
+jenkinsfile
