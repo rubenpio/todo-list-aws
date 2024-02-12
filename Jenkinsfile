@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        GITHUB_TOKEN = credentials('github-token')
+        GITHUB_TOKEN = credentials('ruben')
     }
     stages {
         stage('Get Code') {
