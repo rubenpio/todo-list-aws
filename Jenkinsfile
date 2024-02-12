@@ -39,7 +39,7 @@ pipeline {
             steps {
                 sh '''
                     git add . 
-                    git commit -m "mensaje"
+                    git commit -m "Release 1.0"
                     git push https://rubenpio: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@github.com/rubenpio/todo-list-aws.git develop
                     git checkout master
                     git merge -X theirs develop
