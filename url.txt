@@ -46,10 +46,10 @@ Operation                LogicalResourceId        ResourceType             Repla
 -------------------------------------------------------------------------------------------------
 
 
-Changeset created successfully. arn:aws:cloudformation:us-east-1:129459110025:changeSet/samcli-deploy1707931632/e3a403d5-25b9-4317-bfc8-03d49ba387c8
+Changeset created successfully. arn:aws:cloudformation:us-east-1:129459110025:changeSet/samcli-deploy1707932004/ab2b0199-6a39-4307-820a-01821edf0d48
 
 
-2024-02-14 17:27:23 - Waiting for stack create/update to complete
+2024-02-14 17:33:30 - Waiting for stack create/update to complete
 
 CloudFormation events from stack operations (refresh every 5.0 seconds)
 -------------------------------------------------------------------------------------------------
@@ -59,26 +59,26 @@ CREATE_IN_PROGRESS       AWS::DynamoDB::Table     TodosDynamoDbTable       -
 CREATE_IN_PROGRESS       AWS::DynamoDB::Table     TodosDynamoDbTable       Resource creation      
                                                                            Initiated              
 CREATE_COMPLETE          AWS::DynamoDB::Table     TodosDynamoDbTable       -                      
-CREATE_IN_PROGRESS       AWS::Lambda::Function    DeleteTodoFunction       -                      
-CREATE_IN_PROGRESS       AWS::Lambda::Function    GetTodoFunction          -                      
-CREATE_IN_PROGRESS       AWS::Lambda::Function    ListTodosFunction        -                      
 CREATE_IN_PROGRESS       AWS::Lambda::Function    UpdateTodoFunction       -                      
 CREATE_IN_PROGRESS       AWS::Lambda::Function    CreateTodoFunction       -                      
-CREATE_IN_PROGRESS       AWS::Lambda::Function    DeleteTodoFunction       Resource creation      
-                                                                           Initiated              
+CREATE_IN_PROGRESS       AWS::Lambda::Function    ListTodosFunction        -                      
+CREATE_IN_PROGRESS       AWS::Lambda::Function    GetTodoFunction          -                      
+CREATE_IN_PROGRESS       AWS::Lambda::Function    DeleteTodoFunction       -                      
 CREATE_IN_PROGRESS       AWS::Lambda::Function    ListTodosFunction        Resource creation      
-                                                                           Initiated              
-CREATE_IN_PROGRESS       AWS::Lambda::Function    UpdateTodoFunction       Resource creation      
-                                                                           Initiated              
-CREATE_IN_PROGRESS       AWS::Lambda::Function    GetTodoFunction          Resource creation      
                                                                            Initiated              
 CREATE_IN_PROGRESS       AWS::Lambda::Function    CreateTodoFunction       Resource creation      
                                                                            Initiated              
-CREATE_COMPLETE          AWS::Lambda::Function    ListTodosFunction        -                      
-CREATE_COMPLETE          AWS::Lambda::Function    DeleteTodoFunction       -                      
-CREATE_COMPLETE          AWS::Lambda::Function    UpdateTodoFunction       -                      
-CREATE_COMPLETE          AWS::Lambda::Function    GetTodoFunction          -                      
+CREATE_IN_PROGRESS       AWS::Lambda::Function    UpdateTodoFunction       Resource creation      
+                                                                           Initiated              
+CREATE_IN_PROGRESS       AWS::Lambda::Function    DeleteTodoFunction       Resource creation      
+                                                                           Initiated              
+CREATE_IN_PROGRESS       AWS::Lambda::Function    GetTodoFunction          Resource creation      
+                                                                           Initiated              
 CREATE_COMPLETE          AWS::Lambda::Function    CreateTodoFunction       -                      
+CREATE_COMPLETE          AWS::Lambda::Function    UpdateTodoFunction       -                      
+CREATE_COMPLETE          AWS::Lambda::Function    DeleteTodoFunction       -                      
+CREATE_COMPLETE          AWS::Lambda::Function    ListTodosFunction        -                      
+CREATE_COMPLETE          AWS::Lambda::Function    GetTodoFunction          -                      
 CREATE_IN_PROGRESS       AWS::ApiGateway::RestA   ServerlessRestApi        -                      
                          pi                                                                       
 CREATE_IN_PROGRESS       AWS::ApiGateway::RestA   ServerlessRestApi        Resource creation      
@@ -87,38 +87,38 @@ CREATE_COMPLETE          AWS::ApiGateway::RestA   ServerlessRestApi        -
                          pi                                                                       
 CREATE_IN_PROGRESS       AWS::Lambda::Permissio   DeleteTodoFunctionCrea   -                      
                          n                        tePermissionProd                                
+CREATE_IN_PROGRESS       AWS::Lambda::Permissio   ListTodosFunctionCreat   -                      
+                         n                        ePermissionProd                                 
 CREATE_IN_PROGRESS       AWS::Lambda::Permissio   UpdateTodoFunctionCrea   -                      
+                         n                        tePermissionProd                                
+CREATE_IN_PROGRESS       AWS::Lambda::Permissio   CreateTodoFunctionCrea   -                      
                          n                        tePermissionProd                                
 CREATE_IN_PROGRESS       AWS::ApiGateway::Deplo   ServerlessRestApiDeplo   -                      
                          yment                    yment141b842de6                                 
-CREATE_IN_PROGRESS       AWS::Lambda::Permissio   CreateTodoFunctionCrea   -                      
-                         n                        tePermissionProd                                
 CREATE_IN_PROGRESS       AWS::Lambda::Permissio   GetTodoFunctionCreateP   -                      
                          n                        ermissionProd                                   
-CREATE_IN_PROGRESS       AWS::Lambda::Permissio   ListTodosFunctionCreat   -                      
-                         n                        ePermissionProd                                 
+CREATE_IN_PROGRESS       AWS::Lambda::Permissio   ListTodosFunctionCreat   Resource creation      
+                         n                        ePermissionProd          Initiated              
 CREATE_IN_PROGRESS       AWS::Lambda::Permissio   DeleteTodoFunctionCrea   Resource creation      
+                         n                        tePermissionProd         Initiated              
+CREATE_IN_PROGRESS       AWS::Lambda::Permissio   UpdateTodoFunctionCrea   Resource creation      
                          n                        tePermissionProd         Initiated              
 CREATE_IN_PROGRESS       AWS::Lambda::Permissio   CreateTodoFunctionCrea   Resource creation      
                          n                        tePermissionProd         Initiated              
 CREATE_IN_PROGRESS       AWS::Lambda::Permissio   GetTodoFunctionCreateP   Resource creation      
                          n                        ermissionProd            Initiated              
-CREATE_IN_PROGRESS       AWS::Lambda::Permissio   ListTodosFunctionCreat   Resource creation      
-                         n                        ePermissionProd          Initiated              
-CREATE_IN_PROGRESS       AWS::Lambda::Permissio   UpdateTodoFunctionCrea   Resource creation      
-                         n                        tePermissionProd         Initiated              
 CREATE_COMPLETE          AWS::Lambda::Permissio   DeleteTodoFunctionCrea   -                      
-                         n                        tePermissionProd                                
-CREATE_COMPLETE          AWS::Lambda::Permissio   CreateTodoFunctionCrea   -                      
                          n                        tePermissionProd                                
 CREATE_COMPLETE          AWS::Lambda::Permissio   ListTodosFunctionCreat   -                      
                          n                        ePermissionProd                                 
-CREATE_COMPLETE          AWS::Lambda::Permissio   GetTodoFunctionCreateP   -                      
-                         n                        ermissionProd                                   
 CREATE_COMPLETE          AWS::Lambda::Permissio   UpdateTodoFunctionCrea   -                      
+                         n                        tePermissionProd                                
+CREATE_COMPLETE          AWS::Lambda::Permissio   CreateTodoFunctionCrea   -                      
                          n                        tePermissionProd                                
 CREATE_IN_PROGRESS       AWS::ApiGateway::Deplo   ServerlessRestApiDeplo   Resource creation      
                          yment                    yment141b842de6          Initiated              
+CREATE_COMPLETE          AWS::Lambda::Permissio   GetTodoFunctionCreateP   -                      
+                         n                        ermissionProd                                   
 CREATE_COMPLETE          AWS::ApiGateway::Deplo   ServerlessRestApiDeplo   -                      
                          yment                    yment141b842de6                                 
 CREATE_IN_PROGRESS       AWS::ApiGateway::Stage   ServerlessRestApiProdS   -                      
@@ -137,27 +137,27 @@ Outputs
 -------------------------------------------------------------------------------------------------
 Key                 BaseUrlApi                                                                  
 Description         Base URL of API                                                             
-Value               https://0ljqmny7bc.execute-api.us-east-1.amazonaws.com/Prod                 
+Value               https://8j8wp0666f.execute-api.us-east-1.amazonaws.com/Prod                 
 
 Key                 DeleteTodoApi                                                               
 Description         API Gateway endpoint URL for ${opt:stage} stage for Delete TODO             
-Value               https://0ljqmny7bc.execute-api.us-east-1.amazonaws.com/Prod/todos/{id}      
+Value               https://8j8wp0666f.execute-api.us-east-1.amazonaws.com/Prod/todos/{id}      
 
 Key                 ListTodosApi                                                                
 Description         API Gateway endpoint URL for ${opt:stage} stage for List TODO               
-Value               https://0ljqmny7bc.execute-api.us-east-1.amazonaws.com/Prod/todos           
+Value               https://8j8wp0666f.execute-api.us-east-1.amazonaws.com/Prod/todos           
 
 Key                 UpdateTodoApi                                                               
 Description         API Gateway endpoint URL for ${opt:stage} stage for Update TODO             
-Value               https://0ljqmny7bc.execute-api.us-east-1.amazonaws.com/Prod/todos/{id}      
+Value               https://8j8wp0666f.execute-api.us-east-1.amazonaws.com/Prod/todos/{id}      
 
 Key                 GetTodoApi                                                                  
 Description         API Gateway endpoint URL for ${opt:stage} stage for Get TODO                
-Value               https://0ljqmny7bc.execute-api.us-east-1.amazonaws.com/Prod/todos/{id}      
+Value               https://8j8wp0666f.execute-api.us-east-1.amazonaws.com/Prod/todos/{id}      
 
 Key                 CreateTodoApi                                                               
 Description         API Gateway endpoint URL for ${opt:stage} stage for Create TODO             
-Value               https://0ljqmny7bc.execute-api.us-east-1.amazonaws.com/Prod/todos/          
+Value               https://8j8wp0666f.execute-api.us-east-1.amazonaws.com/Prod/todos/          
 -------------------------------------------------------------------------------------------------
 
 
