@@ -13,14 +13,17 @@ image_repositories = []
 [staging]
 [staging.deploy]
 [staging.deploy.parameters]
-stack_name = "todo-list-aws-staging"
-s3_bucket = "aws-sam-cli-managed-staging-samclisourcebucket-upt09go84tay"
+stack_name = "todo-list-aws"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-7d3sgygjka7k"
 s3_prefix = "todo-list-aws"
 region = "us-east-1"
-capabilities = "CAPABILITY_IAM"
-parameter_overrides = "Stage=\"staging\""
+capabilities = ["CAPABILITY_IAM"]
 image_repositories = []
+confirm_changeset = false
+disable_rollback = false
 
+[staging.deploy.parameters.parameter_overrides]
+Stage = "staging"
 [production]
 [production.deploy]
 [production.deploy.parameters]
