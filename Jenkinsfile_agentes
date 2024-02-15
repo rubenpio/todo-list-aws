@@ -1,0 +1,47 @@
+pipeline {
+    agent none
+    
+    stages {
+        stage('Get Code') {
+            agent any
+            steps {
+                script {
+                git branch: 'master', url: 'https://github.com/rubenpio/todo-list-aws.git'
+                stash includes: '**', name: 'code'
+                cleanWs()
+                }
+            }
+        }
+        stage ('Deploy') {
+            agent { label 'python' }
+            steps {
+                script {
+                    unstash 'code'
+                    sh '''
+                        sam build
+                        sam deploy --stack-name todo-list-aws-production --region us-east-1 --parameter-overrides Stage=production --no-confirm-changeset --capabilities CAPABILITY_IAM --s3-bucket aws-sam-cli-managed-default-samclisourcebucket-7d3sgygjka7k --no-disable-rollback --save-params --config-file samconfig.toml --config-env production | tee url.txt
+                    '''
+                    stash includes: '**', name: 'code'
+                    cleanWs()
+                }
+            }
+        }
+        stage ('Smoke Test') {
+            agent { label 'ksh' }
+            steps {
+                script {
+                    unstash 'code'
+                sh '''
+                    set PYTHONPATH=%WORKSPACE%
+                    chmod 774 -R test/integration/scripts
+                    ksh test/integration/scripts/script_prod.ksh
+                    /var/lib/jenkins/.local/bin/pytest --junitxml=results.xml test/integration/todoApiTestProd.py 
+                    test/integration/scripts/reset_prod.ksh
+                '''
+                junit 'results.xml'
+                cleanWs()
+                }
+            }
+        }
+    }
+}
