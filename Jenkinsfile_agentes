@@ -1,0 +1,103 @@
+pipeline {
+    agent none 
+    environment {
+        GITHUB_TOKEN = credentials('bb7a4420-e908-4552-adf5-56201a48664e')
+    }
+
+    stages {
+        stage('Get Code') {
+            agent any
+            steps {
+                script {
+                    sh '''
+                     whoami
+                     hostname
+                    '''
+                    git branch: 'develop', url: 'https://github.com/rubenpio/todo-list-aws.git'
+                    stash includes: '**', name: 'code'
+                    cleanWs()
+                }
+            }
+        }
+
+        stage('Static test') {
+            agent { label 'python' }
+            steps {
+                script {
+                    unstash 'code'
+                
+                sh '''
+                    whoami
+                    hostname
+                    flake8 --format=pylint --exit-zero ./src >flake8.out
+                    bandit --exit-zero -r ./src -f custom -o bandit.out --severity-level medium --msg-template "{abspath}:{line}: [{test_id}, {severity}] {msg}"
+                '''
+                stash includes: '**', name: 'code'
+                cleanWs()
+                }
+            }
+        }
+
+        stage('Deploy') {
+            agent { label 'python' }
+            steps {
+                script {
+                    unstash 'code'
+                
+                sh '''
+                    whoami
+                    hostname
+                    sam build
+                    sam deploy --stack-name todo-list-aws --region us-east-1 --parameter-overrides Stage=staging --no-confirm-changeset --capabilities CAPABILITY_IAM --s3-bucket aws-sam-cli-managed-default-samclisourcebucket-7d3sgygjka7k --no-disable-rollback --save-params --config-file samconfig.toml --config-env staging | tee url.txt
+                '''
+                stash includes: '**', name: 'code'
+                cleanWs()
+                }
+            }
+        }
+
+        stage('Rest Test') {
+            agent { label 'ksh' }
+            steps {
+                script {
+                    unstash 'code'
+                
+                sh '''
+                    whoami
+                    hostname
+                    set PYTHONPATH=%WORKSPACE%
+                    ksh test/integration/scripts/script.ksh
+                    pytest --junitxml=results.xml test/integration/todoApiTest.py 
+                    ksh test/integration/scripts/reset.ksh
+                '''
+                junit 'results.xml'
+                stash includes: '**', name: 'code'
+                cleanWs()
+                }
+            }
+        }
+        // se comenta ya que me fusiona los Jenkinfiles
+        // stage('Promote') {
+        //     agent any
+        //     steps {
+        //         script {
+        //             unstash 'code'
+        //             sh '''
+        //                 whoami
+        //                 hostname
+        //                 git add . 
+        //                 git commit -m "Release 1.0"
+        //                 git push https://rubenpio:${GITHUB_TOKEN}@github.com/rubenpio/todo-list-aws.git develop
+        //                 git checkout master
+        //                 cp Jenkinsfile Jenkinsfile_backup
+        //                 git merge -X ours develop
+        //                 mv -f Jenkinsfile_backup Jenkinsfile
+        //                 git push -f https://rubenpio:${GITHUB_TOKEN}@github.com/rubenpio/todo-list-aws.git master 
+        //             '''
+                    
+        //             cleanWs()
+        //         }
+        //     }
+        // }
+    }
+}
