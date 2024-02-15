@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent  {
+            label 'agente1'
+        }
     environment {
         GITHUB_TOKEN = credentials('bb7a4420-e908-4552-adf5-56201a48664e')
     }
@@ -37,19 +39,19 @@ pipeline {
                 junit 'results.xml'
             }
         }
-        stage ('Promote') {
-            steps {
-                script {
-                    sh '''
-                        git add . 
-                        git commit -m "Release 1.0"
-                        git push https://rubenpio:${GITHUB_TOKEN}@github.com/rubenpio/todo-list-aws.git develop
-                        git checkout master
-                        git merge -X ours develop
-                        git push -f https://rubenpio:${GITHUB_TOKEN}@github.com/rubenpio/todo-list-aws.git master 
-                    '''
-                }
-            }
-        }
+//        stage ('Promote') {
+//            steps {
+//                script {
+//                    sh '''
+//                        git add . 
+//                        git commit -m "Release 1.0.0"
+//                        git push https://rubenpio:${GITHUB_TOKEN}@github.com/rubenpio/todo-list-aws.git develop
+//                        git checkout master
+//                        git merge -X ours develop
+//                        git push -f https://rubenpio:${GITHUB_TOKEN}@github.com/rubenpio/todo-list-aws.git master 
+//                    '''
+//                }
+//          }
+//        }
     }
 }
