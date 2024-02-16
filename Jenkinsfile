@@ -7,6 +7,7 @@ pipeline {
         stage('Get Code') {
             steps {
                 git branch: 'master', url: 'https://github.com/rubenpio/todo-list-aws.git'
+                sh 'wget -O samconfig.toml "https://raw.githubusercontent.com/rubenpio/todo-list-aws-config/production/samconfig.toml"'
             }
         }
         stage ('Deploy') {
