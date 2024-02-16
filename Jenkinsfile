@@ -9,6 +9,7 @@ pipeline {
         stage('Get Code') {
             steps {
                 git branch: 'develop', url: 'https://github.com/rubenpio/todo-list-aws.git'
+                sh 'wget -O samconfig.toml "https://raw.githubusercontent.com/rubenpio/todo-list-aws-config/staging/samconfig.toml"'
             }
         }
         stage ('Static test') {
